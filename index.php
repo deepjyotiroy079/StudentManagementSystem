@@ -27,7 +27,7 @@
     
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">Student Management System</h1>
-        <p class="lead">Simple Student Management System built using JSP, Bootstrap 4, MySQL</p>
+        <p class="lead">Simple Student Management System built using PHP, Bootstrap 4, MySQL</p>
     </div>
 
     <script src="./assets/js/jquery-3.4.1.min.js"></script>

@@ -14,10 +14,8 @@
 			if ($time) {
 				$dob = date('Y-m-d', $time);
 			} else {
-				echo 'Invalid Date: ' . $_POST['dob'];
-				
+				echo 'Invalid Date: '.$_POST['dob'];	
 			}
-
 			$query = "INSERT INTO students(firstname, lastname, mail, dob, gender, teacher_id) VALUES('$firstname','$lastname','$email','$dob', '$gender', '$teacher_id')";
 			$result = mysqli_query($conn, $query) or die(mysqli_error());
 			if($result) {
@@ -56,7 +54,7 @@
 						</div>
 					</li>
 					<li class="nav-link">
-						<?php echo '<strong>Welcome, '.$_SESSION['username'].' id : '.$_SESSION['teacher_id'].'</strong> '; ?>
+						<?php echo '<strong>Welcome, '.$_SESSION['username'].'</strong> '; ?>
 					</li>	
 				</ul>	
 			</nav>
@@ -79,6 +77,10 @@
 							<label for="email">Email Address</label>
 							<input type="email" name="email" class="form-control" placeholder="Enter email Address" required>
 						</div>
+						<!--<div class="form-group">
+							<label for="profile_pic">Upload an image : </label>
+							<input type="file" name="profile_image" class="form-control" plaeholder="Upload a profile pic" required>
+						</div> -->
 						<div class="form-group">
 							<label for="dob">Date of Birth</label>
 							<input type="date" name="dob" class="form-control" required>

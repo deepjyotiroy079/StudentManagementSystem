@@ -27,7 +27,7 @@
 						</div>
 					</li>
 					<li class="nav-link">
-						<?php echo '<strong>Welcome, '.$_SESSION['username'].' id : '.$_SESSION['teacher_id'].'</strong> '; ?>
+						<?php echo '<strong>Welcome, '.$_SESSION['username']; ?>
 					</li>
 					
 				</ul>	
