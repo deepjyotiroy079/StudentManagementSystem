@@ -22,7 +22,6 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="students/add.php">Add Students</a>
 							<a class="dropdown-item" href="students/remove.php">Remove Students</a>
-							<a class="dropdown-item" href="students/update.php">Update Students</a>
 							<a class="dropdown-item" href="students/view.php">View Students</a>
 						</div>
 					</li>

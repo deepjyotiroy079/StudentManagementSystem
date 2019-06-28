@@ -6,7 +6,9 @@
 	$teacher_id = $_SESSION['teacher_id'];
 	$query = "SELECT * FROM students WHERE teacher_id='$teacher_id'";
 	$result = mysqli_query($conn, $query) or die(mysqli_error());
-	$row = mysqli_num_rows($result);
+    $row = mysqli_num_rows($result);
+    // getting id from the url
+    $id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,8 +33,7 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="add.php">Add Students</a>
 							<a class="dropdown-item" href="remove.php">Remove Students</a>
-							<a class="dropdown-item" href="update.php">Update Students</a>
-							<a class="dropdown-item" href="view.php">View Students</a>
+							<a class="dropdown-item active" href="view.php">View Students</a>
 						</div>
 					</li>
 					<li class="nav-link">
@@ -56,6 +57,7 @@
 						<th scope="col">Last Name</th>
 						<th scope="col"> Email</th>
 						<th scope="col"> Gender</th>
+                        <th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -68,6 +70,7 @@
 						<td><?php echo $row['lastname']; ?></td>
 						<td><?php echo $row['mail']; ?></td>
 						<td><?php echo $row['gender']; ?></td>
+                        <td><a href="update.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Edit</a></td>
 					</tr>
 				<?php } ?>
 				</tbody>

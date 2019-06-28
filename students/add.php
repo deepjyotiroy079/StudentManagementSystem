@@ -19,7 +19,7 @@
 			$query = "INSERT INTO students(firstname, lastname, mail, dob, gender, teacher_id) VALUES('$firstname','$lastname','$email','$dob', '$gender', '$teacher_id')";
 			$result = mysqli_query($conn, $query) or die(mysqli_error());
 			if($result) {
-				header('Location: ../admin-dashboard.php');
+				header('Location: ../teacher-dashboard.php');
 			} else {
 				echo '<script>alert("value failed");</script>';
 			}
@@ -47,9 +47,8 @@
 							Students
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							<a class="dropdown-item" href="add.php">Add Students</a>
+							<a class="dropdown-item active" href="add.php">Add Students</a>
 							<a class="dropdown-item" href="remove.php">Remove Students</a>
-							<a class="dropdown-item" href="update.php">Update Students</a>
 							<a class="dropdown-item" href="view.php">View Students</a>
 						</div>
 					</li>

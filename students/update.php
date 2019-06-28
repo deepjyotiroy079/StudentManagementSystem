@@ -1,19 +1,19 @@
 <?php 
-
-	session_start();
+	session_start(); 
 	include_once('../includes/connection.php');
-	$teacher_id = $_SESSION['teacher_id'];
-	if(isset($_POST['student_id']) && isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['email'])) {
-		$id = $_POST['student_id'];
-		$firstname = $_POST['firstname'];
-		$lastname = $_POST['lastname'];
-		$email = $_POST['email'];
-		
-		$query = "UPDATE students SET firstname='$firstname', lastname='$lastname', mail='$email' WHERE id='$id' AND teacher_id='$teacher_id'";
-		$result = mysqli_query($conn, $query) or die(mysqli_error());
-		header('Location: ../teacher-dashboard.php');
+    // echo $_SESSION['teacher_id'];
+    $id = $_GET['id'];
+    $get_query = "SELECT * FROM students WHERE id='$id'";
+    $row = mysqli_fetch_assoc(mysqli_query($conn, $get_query));
 
-	}
+    // $firstname = $_POST['firstname'];
+    // $lastname = $_POST['lastname'];
+    // $email = $_POST['email'];
+    // $update_query = "UPDATE students SET firstname='$firstname, lastname='$lastname', mail = '$email'";
+    // $result = mysqli_query($conn, $update_query);
+    // if($result) {
+    //     header('Location: view.php');
+    // }
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,17 +38,15 @@
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="add.php">Add Students</a>
 							<a class="dropdown-item" href="remove.php">Remove Students</a>
-							<a class="dropdown-item" href="update.php">Update Students</a>
 							<a class="dropdown-item" href="view.php">View Students</a>
 						</div>
 					</li>
 					<li class="nav-link">
-						<?php echo '<strong>Welcome, '.$_SESSION['username'].'</strong>'; ?>
-					</li>
-					
+						<?php echo '<strong>Welcome, '.$_SESSION['username'].'</strong> '; ?>
+					</li>	
 				</ul>	
 			</nav>
-			<a class="btn btn-outline-primary" href="logout.php">Logout</a>
+			<a class="btn btn-outline-primary" href="../logout.php">Logout</a>
 		</div>
 		<div class="container text-center">
 			<h2>Update Student</h2>
@@ -56,38 +54,28 @@
 				<div class="col-12">
 					<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
 						<div class="form-group">
-							<select class="custom-select" name="student_id" required>
-								<?php
-									$query = "SELECT id FROM students WHERE teacher_id='$teacher_id'";
-									$result = mysqli_query($conn, $query) or die(mysqli_query());
-								?>
-								<option selected>Select ID</option>
-								<?php while($row = mysqli_fetch_assoc($result)) {?>
-									<option value="<?php echo $row['id']; ?>"><?php echo $row['id']; ?></option>
-								<?php } ?>
-							</select>
-						</div>
-						<div class="form-group">
 							<label for="firstname">First Name </label>
-							<input type="text" name="firstname" class="form-control" placeholder="Enter the first name" required autocomplete="off">
+							<input type="text" name="firstname" class="form-control" value="<?php echo $row['firstname']; ?>" placeholder="Enter the first name" required autocomplete="off">
 						</div>
 						<div class="form-group">
 							<label for="lastname">Last Name</label>
-							<input type="text" name="lastname" class="form-control" placeholder="Enter the last name" required>
+							<input type="text" name="lastname" class="form-control" value="<?php echo $row['lastname']; ?>" placeholder="Enter the last name" required>
 						</div>
 						<div class="form-group">
 							<label for="email">Email Address</label>
-							<input type="email" name="email" class="form-control" placeholder="Enter email Address" required>
+							<input type="email" name="email" class="form-control" value="<?php echo $row['mail']; ?>" placeholder="Enter email Address" required>
 						</div>
 						<!--<div class="form-group">
 							<label for="profile_pic">Upload an image : </label>
 							<input type="file" name="profile_image" class="form-control" plaeholder="Upload a profile pic" required>
-						</div> -->						
+						</div> -->
 						<input type="submit" value="Update Student" class="btn btn-primary btn-lg btn-block">
 					</form>
 				</div>			
 			</div>
+			
 		</div>
+		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

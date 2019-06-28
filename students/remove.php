@@ -32,13 +32,12 @@
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 							<a class="dropdown-item" href="add.php">Add Students</a>
-							<a class="dropdown-item" href="remove.php">Remove Students</a>
-							<a class="dropdown-item" href="update.php">Update Students</a>
+							<a class="dropdown-item active" href="remove.php">Remove Students</a>
 							<a class="dropdown-item" href="view.php">View Students</a>
 						</div>
 					</li>
 					<li class="nav-link">
-						<?php echo '<strong>Welcome, '.$_SESSION['username'].' id : '.$_SESSION['teacher_id'].'</strong> '; ?>
+						<?php echo '<strong>Welcome, '.$_SESSION['username'].'</strong> '; ?>
 					</li>	
 				</ul>	
 			</nav>
